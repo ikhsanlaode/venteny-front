@@ -11,7 +11,7 @@ use Auth;
 class DashboardController extends Controller
 {
 	private $token;
-
+    private $user;
 
 	public function __construct() {
         $this->middleware(function ($request, $next){
@@ -20,25 +20,27 @@ class DashboardController extends Controller
                 Auth::logout();
                 $request->session('token')->flush();
                 Cookie::queue(Cookie::forget('token'));
-                return redirect('/');
+                 return redirect('login-view');
             }
+
             return $next($request);
         });
     }
 
     public function index(Request $request)
     {
-    	$client = new Client();
-    	$url = env('API_URL').'/employee';
-    	$result = $client->get($url, [
-                'headers' => [
-                    'Authorization' => 'Bearer '. $this->token,
-                    'Accept'     => 'application/json',
-                ],
-        ]);
 
-        $data = json_decode((string) $result->getBody());
+        $http = new \GuzzleHttp\Client;
+        $employee = $http->get(env('API_URL').'/employee', [
+                        'headers' => [
 
+                            'Authorization' => 'Bearer '. $this->token,
+                            'Accept'     => 'application/json',
+                        ],
+                    ]);
+
+
+        $data = json_decode((string) $employee->getBody());
         return view('dashboard',compact('data'));
 
     }

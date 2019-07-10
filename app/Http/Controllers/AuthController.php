@@ -20,20 +20,26 @@ class AuthController extends Controller
     			'email' => $request->email,
     			'password' => $request->password
     		]
-    	]);
+        ]);
 
     	$data = json_decode($result->getBody());
-
     	Cookie::queue(Cookie::make('token', $data->success->token));
 
-    	return redirect('/dashboard');
+    	return redirect('/');
     }
 
     public function logout(Request $request){
 	  	Auth::logout();
 	  	$request->session('token')->flush();
         Cookie::queue(Cookie::forget('token'));
-	  	return redirect('/');
+	  	return redirect('login-view');
     }
+
+    public function loginView()
+    {
+        return view('login');
+    }
+
+
 
 }

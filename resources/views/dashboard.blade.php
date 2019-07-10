@@ -2,10 +2,9 @@
 @section('content')        
 
     <div class="content">
+
             <div class ="container-fluid">
-                @role('superadministrator','hrd')
                 <a class="btn btn-primary" role="button" href="/employee/create">Tambah karyawan</a>
-                @endrole
                 <div class="content table-responsive table-full-width">
                     <table class="table table-hover table-striped">
                         <thead>
@@ -72,7 +71,7 @@
 </body>
 
     <!--   Core JS Files   -->
-    <script type="text/javascript" src="{{ asset('/js/jquery.3.2.1.min.js') }}"></script>
+    
     <script type="text/javascript" src="{{ asset('/js/bootstrap.min.js') }}"></script>
 
 	<!--  Charts Plugin -->

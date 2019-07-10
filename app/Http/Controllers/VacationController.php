@@ -18,7 +18,7 @@ class VacationController extends Controller
 	                Auth::logout();
 	                $request->session('token')->flush();
 	                Cookie::queue(Cookie::forget('token'));
-	                return redirect('/');
+	                return redirect('login-view');
 	            }
 	            return $next($request);
 	        });
@@ -82,7 +82,7 @@ class VacationController extends Controller
 
 	        $data = json_decode((string) $result->getBody());
 
-	        return redirect('/dashboard');
+	        return redirect('/');
 	    }
 
 	    public function store(Request $request)
@@ -105,7 +105,7 @@ class VacationController extends Controller
 
 	        $data = json_decode((string) $result->getBody());
 
-	        return redirect('/dashboard');
+	        return redirect('/');
 	    }
 
 	    public function approve(Request $request, $id)
@@ -125,7 +125,7 @@ class VacationController extends Controller
 
 	        $data = json_decode((string) $result->getBody());
 
-	        return redirect('/dashboard');
+	        return redirect('/');
 	    }
 
 	    public function reject(Request $request, $id)
@@ -145,6 +145,6 @@ class VacationController extends Controller
 
 	        $data = json_decode((string) $result->getBody());
 
-	        return redirect('/dashboard');
+	        return redirect('/');
 	    }
 }

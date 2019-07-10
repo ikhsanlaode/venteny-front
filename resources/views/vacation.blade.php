@@ -28,12 +28,12 @@
                                     <td>{{$d->user->name}}</td>
                                     <td>{{$d->start_at}}</td>
                                     <td>{{$d->end_at}}</td>
-                                    <td>{{$d->total}}</td>
+                                    <td>{{$d->total." hari"}}</td>
                                     <td>{{$d->status->string}}</td>
                                     @if ($d->status->number > 0)
                                         <td>No Action</td>
                                     @else
-                                        <td><a href="/vacation/approve/{{ $d->id }}">Approve</a> || <a href="/pegawai/edit/{{ $d->id }}">Reject</a></td>
+                                        <td><a href="/vacation/approve/{{ $d->id }}">Approve</a> || <a href="/vacation/reject/{{ $d->id }}">Reject</a></td>
                                     @endif
                                 </tr>
                             @endforeach

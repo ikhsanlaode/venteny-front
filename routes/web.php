@@ -11,13 +11,14 @@
 |
 */
 
-Route::get('/', function () {
-    return view('login');
-});
+// Route::get('/', function () {
+//     return view('login');
+// });
 
+Route::get('/','DashboardController@index')->name('dashboard');
+Route::get('/login-view','AuthController@loginView')->name('login.view');
 Route::post('/login','AuthController@login');
 Route::get('/logout', 'AuthController@logout')->name('logout');
-Route::get('/dashboard','DashboardController@index')->name('dashboard');
 Route::get('/employee/create','EmployeeController@create');
 Route::post('/employee/store','EmployeeController@store')->name('employee.store');
 Route::get('/vacation','VacationController@index')->name('vacation');
@@ -26,4 +27,5 @@ Route::post('/vacation/max/','VacationController@storeMax')->name('vacation.max.
 Route::get('/vacation/create','VacationController@create')->name('vacation.create');
 Route::post('/vacation/','VacationController@store')->name('vacation.store');
 Route::get('/vacation/approve/{id}','VacationController@approve');
+Route::get('/vacation/reject/{id}','VacationController@reject');
 

@@ -17,9 +17,9 @@
                     </select>
 
                     <label>Mulai</label>
-                    <input type="text" class="form-control" placeholder="YYYY-MM-DD" name="start_at" required>
+                    <input type="date" class="form-control" placeholder="YYYY-MM-DD" name="start_at" value="{{date("Y-m-d")}}" required>
                     <label>Berakhir</label>
-                    <input type="text" class="form-control" placeholder="YYYY-MM-DD" name="end_at" required>
+                    <input type="date" class="form-control" placeholder="YYYY-MM-DD" name="end_at" value="{{date("Y-m-d")}}" required>
                     <label>Keterangan</label>
                     <input type="text" class="form-control" placeholder="keterangan" name="description" required>
                         
